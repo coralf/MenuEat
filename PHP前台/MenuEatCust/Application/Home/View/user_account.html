@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>用户中心</title>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css"/>
+    <!--<script type="text/javascript" src="__PUBLIC__/js/public.js"></script>
+    -->
+    <script type="text/javascript" src="__PUBLIC__/js/jquery01.js"></script>
+    <!--    <script type="text/javascript" src="__PUBLIC__/js/jqpublic.js"></script>-->
+</head>
+<body>
+<include file="Public/header.html"/>
+<!--Start content-->
+<section class="Psection MT20">
+    <nav class="U-nav Font14 FontW">
+        <ul>
+            <li><i></i><a href="__ROOT__/home/Customer/userCenter">用户中心首页</a></li>
+            <li><i></i><a href="__ROOT__/home/Order/userOrder">我的订单</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/UserLoal">收货地址</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userMessage">我的评论</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userCoupon">我的优惠券</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userFavorites">我的收藏</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userAccount">账户管理</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userExit">安全退出</a></li>
+        </ul>
+    </nav>
+    <article class="U-article Overflow">
+        <!--user Account-->
+        <section class="AccManage Overflow">
+            <span class="AMTitle Block Font14 FontW Lineheight35">账户管理</span>
+            <p>登陆邮箱：{$dataCustomer.c_email}( <a href="#" target="_blank">更换手机号码</a> )</p>
+            <p>手机号码：{$dataCustomer.c_phone} ( <a href="#" target="_blank">更换手机号码</a> ) ( <a href="#" target="_blank">解绑手机</a>
+                )</p>
+            <!--  <p>上次登陆：2014年09月22日 11:40:36( *如非本人登陆，请立即<a href="#" target="_blank">修改您的密码</a>！ )</p>-->
+            <form action="__ROOT__/home/customer/updateCust" method="post" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td width="30%" align="right">*修改头像：</td>
+                        <td>
+                            <input size="100" type="file" id="upload" name="icon" style="display: none"/>
+                            <img src="__PUBLIC__/upload/default_photo.jpg" id="pic" width="150" height="130"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30%" align="right">*昵称：</td>
+                        <td><input type="text" name="c_nikename" value="{$dataCustomer.c_nikename}"></td>
+                    </tr>
+                    <tr>
+                        <td width="30%" align="right">*邮箱：</td>
+                        <td><input type="email" name="c_email" value="{$dataCustomer.c_email}"></td>
+                    </tr>
+                    <tr>
+                        <td width="30%" align="right">*手机：</td>
+                        <td><input type="tel" name="c_phone" value="{$dataCustomer.c_phone}"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input name="" type="submit" value="保 存"></td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+    </article>
+</section>
+<!--End content-->
+<div class="F-link">
+    <span>友情链接：</span>
+</div>
+<include file="Public/footer.html"/>
+<script>
+    $(function () {
+        $("#pic").click(function () {
+            $("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+            $("#upload").on("change", function () {
+                var objUrl = getObjectURL(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
+                if (objUrl) {
+                    $("#pic").attr("src", objUrl); //将图片路径存入src中，显示出图片
+                }
+            });
+        });
+    });
+
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+
+</script>
+</body>
+</html>

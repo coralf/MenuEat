@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>用户中心</title>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="__PUBLIC__/js/public.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jqpublic.js"></script>
+
+</head>
+<body>
+<include file="Public/header.html"/>
+<!--Start content-->
+<section class="Psection MT20">
+    <nav class="U-nav Font14 FontW">
+        <ul>
+            <li><i></i><a href="__ROOT__/home/Customer/userCenter">用户中心首页</a></li>
+            <li><i></i><a href="__ROOT__/home/Order/userOrder">我的订单</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/UserLoal">收货地址</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userMessage">我的评论</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userCoupon">我的优惠券</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userFavorites">我的收藏</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userAccount">账户管理</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userExit">安全退出</a></li>
+        </ul>
+    </nav>
+    <article class="U-article Overflow">
+        <section class="M-coupon Overflow">
+            <span class="coupontitle Block Font14 FontW Lineheight35">我的优惠券</span>
+            <ul>
+                <volist name="dataCfc" id="i">
+                    <a href="shop.html" class="Fontfff" target="_blank">
+                        <li>
+                            <p class="U-price FontW"><i>￥</i>{$i.cfc_money}<span class="Font14 FontW">{$i.cfc_food}</span></p>
+                            <p>发行店铺：{$i.cfc_name}</p>
+                            <p>有效期：{$i.cfc_start_time}至{$i.cfc_end_time}</p>
+                        </li>
+                    </a>
+                </volist>
+            </ul>
+        </section>
+    </article>
+</section>
+<!--End content-->
+<div class="F-link">
+    <span>友情链接：</span>
+</div>
+<include file="Public/footer.html" onclik="click"/>
+</body>
+</html>

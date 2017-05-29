@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>DeathGhost</title>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="__PUBLIC__/js/public.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jqpublic.js"></script>
+    <script>
+    </script>
+</head>
+<body>
+<include file="Public/header.html"/>
+<!--Start content-->
+<section class="Cfn">
+    <aside class="C-left">
+        <div class="S-time">服务时间：周一~周六
+            <time>09:00</time>
+            -
+            <time>23:00</time>
+        </div>
+        <div class="C-time">
+            <img src="__PUBLIC__/upload/dc.jpg"/>
+        </div>
+        <a href="list.html" target="_blank"><img src="__PUBLIC__/images/by_button.png"></a>
+        <a href="list.html" target="_blank"><img src="__PUBLIC__/images/dc_button.png"></a>
+    </aside>
+    <div class="F-middle">
+        <ul class="rslides f426x240">
+            <volist name="dataBanner" id="i">
+                <li><a href="javascript:"><img src="__PUBLIC__/upload/{$i.f_pic}"/></a></li>
+            </volist>
+        </ul>
+    </div>
+    <aside class="N-right">
+        <div class="N-title">公司新闻 <i>COMPANY NEWS</i></div>
+        <ul class="Newslist">
+            <li><i></i><a href="article_read.html" target="_blank" title="这里调用新闻标题...">欢迎访问DeathGhost博客站...</a></li>
+            <li><i></i><a href="article_read.html" target="_blank" title="这里调用新闻标题...">H5WEB前端开发 移动WEB模板设计...</a></li>
+        </ul>
+        <ul class="Orderlist" id="UpRoll">
+            <li>
+                <p>订单编号：2014090912973</p>
+                <p>收件人：王先生</p>
+                <p>订单状态：<i class="State01">已发货</i></p>
+            </li>
+            <li>
+                <p>订单编号：2014090912978</p>
+                <p>收件人：张小姐</p>
+                <p>订单状态：<i class="State02">已签收</i><i class="State03">已点评</i></p>
+            </li>
+            <li>
+                <p>订单编号：2014090912988</p>
+                <p>收件人：龚先生</p>
+                <p>订单状态：<i class="State02">已签收</i><i class="State03">已点评</i></p>
+            </li>
+        </ul>
+        <script>
+            var UpRoll = document.getElementById('UpRoll');
+            var lis = UpRoll.getElementsByTagName('li');
+            var ml = 0;
+            var timer1 = setInterval(function () {
+                var liHeight = lis[0].offsetHeight;
+                var timer2 = setInterval(function () {
+                    UpRoll.scrollTop = (++ml);
+                    if (ml == 1) {
+                        clearInterval(timer2);
+                        UpRoll.scrollTop = 0;
+                        ml = 0;
+                        lis[0].parentNode.appendChild(lis[0]);
+                    }
+                }, 10);
+            }, 5000);
+        </script>
+    </aside>
+</section>
+<section class="Sfainfor">
+    <article class="Sflist">
+        <div id="Indexouter">
+            <ul id="Indextab">
+                <li class="current">点菜</li>
+                <li>餐馆</li>
+                <p class="class_B">
+                    <a href="#">中餐</a>
+                    <a href="#">西餐</a>
+                    <a href="#">甜点</a>
+                    <a href="#">日韩料理</a>
+                    <span><a href="#" target="_blank">more ></a></span>
+                </p>
+            </ul>
+            <div id="Indexcontent">
+                <ul style="display:block;">
+                    <li>
+                        <p class="seekarea">
+                            <volist name="dataArea" id="i">
+                                <a href="#">{$i.ar_name}</a>
+                            </volist>
+                        </p>
+                        <div class="SCcontent">
+                            <volist name="dataFoodsRecommed" id="i">
+                                <a href="__ROOT__/home/Foods/detail/id/{$i.f_id}" target="_blank" title="菜品名称">
+                                    <figure>
+                                        <img src="__PUBLIC__/upload/{$i.f_pic}">
+                                        <figcaption>
+                                            <span class="title">{$i.f_name}</span>
+                                            <span class="price"><i>￥</i>{$i.f_price}</span>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            </volist>
+                        </div>
+                        <div class="bestshop">
+                            <volist name="dateFoodsStore" id="i">
+                                <a href="__ROOT__/home/foods/toStore/id/{$i.fs_id}"  title="店铺名称">
+                                    <figure>
+                                        <img src="__PUBLIC__/upload/{$i.fs_pic}">
+                                    </figure>
+                                </a>
+                            </volist>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </article>
+    <aside class="A-infor">
+        <img src="__PUBLIC__/upload/2014911.jpg">
+        <div class="usercomment">
+            <span>用户菜品点评</span>
+            <ul>
+                <volist name="dataFUDes" id="i">
+                    <li>
+                        <img src="__PUBLIC__/upload/{$i.f_pic}">
+                        用户“{$i.c_nike}” 对 [{$i.fs_name}] “{$i.f_name}”评说：{$i.f_u_des}
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </aside>
+</section>
+<!--End content-->
+<div class="F-link">
+    <span>友情链接：</span>
+
+</div>
+<include file="Public/footer.html" />
+</body>
+</html>

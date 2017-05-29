@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>DeathGhost-用户中心</title>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="__PUBLIC__/js/public.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jqpublic.js"></script>
+</head>
+<body>
+<include file='Public/header.html'/>
+<!--Start content-->
+<section class="Psection MT20">
+    <nav class="U-nav Font14 FontW">
+        <ul>
+            <li><i></i><a href="__ROOT__/home/Customer/userCenter">用户中心首页</a></li>
+            <li><i></i><a href="__ROOT__/home/Order/userOrder">我的订单</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/UserLoal">收货地址</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userMessage">我的评论</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userCoupon">我的优惠券</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userFavorites">我的收藏</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userAccount">账户管理</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userExit">安全退出</a></li>
+        </ul>
+    </nav>
+    <article class="U-article Overflow">
+        <!--user order list-->
+        <section>
+            <table class="Myorder">
+                <th class="Font14 FontW">订单编号</th>
+                <th class="Font14 FontW">下单时间</th>
+                <th class="Font14 FontW">收件人</th>
+                <th class="Font14 FontW">订单总金额</th>
+                <th class="Font14 FontW">订单状态</th>
+                <th class="Font14 FontW">操作</th>
+
+
+                <volist name="dataOrderForm" id="i">
+                    <tr>
+                        <td class="FontW"><a href="user_order.html">{$i.of_serial_number}</a></td>
+                        <td>{$i.of_create_time}</td>
+                        <td>{$i.c_name}</td>
+                        <td>{$i.of_money}</td>
+                        <td>
+                            <switch name="i.of_state">
+                                <case value="0">待付款</case>
+                                <case value="1">待发货</case>
+                                <case value="2">待收货</case>
+                                <case value="3">待评价</case>
+                                <default/>
+                                待付款
+                            </switch>
+                        </td>
+                        <td><a href="#">取消订单</a> | <a href="#">付款</a></td>
+                    </tr>
+                </volist>
+            </table>
+            <div class="TurnPage">
+                <a href="#">
+                    <span class="Prev"><i></i>首页</span>
+                </a>
+                <a href="#"><span class="PNumber">1</span></a>
+                <a href="#"><span class="PNumber">2</span></a>
+                <a href="#">
+                    <span class="Next">最后一页<i></i></span>
+                </a>
+            </div>
+        </section>
+    </article>
+</section>
+<!--End content-->
+<div class="F-link">
+    <span>友情链接：</span>
+</div>
+<include file='Public/footer.html'/>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>用户中心</title>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css"/>
+    <!--<script type="text/javascript" src="__PUBLIC__/js/public.js"></script>-->
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <!--    <script type="text/javascript" src="__PUBLIC__/js/jqpublic.js"></script>-->
+</head>
+<body>
+<include file="Public/header.html"/>
+<section class="Psection MT20">
+    <nav class="U-nav Font14 FontW">
+        <ul>
+            <li><i></i><a href="__ROOT__/home/Customer/userCenter">用户中心首页</a></li>
+            <li><i></i><a href="__ROOT__/home/Order/userOrder">我的订单</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/UserLoal">收货地址</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userMessage">我的评论</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userCoupon">我的优惠券</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userFavorites">我的收藏</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userAccount">账户管理</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userExit">安全退出</a></li>
+        </ul>
+    </nav>
+    <article class="U-article Overflow">
+        <!--user Address-->
+        <section class="Myaddress Overflow">
+            <span class="MDtitle Font14 FontW Block Lineheight35">收货人信息</span>
+            <notempty name="dataCustomerLocal">
+                <volist name="dataCustomerLocal" id="i">
+                    <form action="__ROOT__/home/CustLocal/updateUserLocal" method="post">
+                        <table>
+                            <tr>
+                                <td width="30%" class="Font14 FontW Lineheight35" align="right">选择所在地：</td>
+                                <td>
+                                    <select name="ul_privence" class="select_ssq">
+                                        <option>{$i.ul_privence}</option>
+                                    </select>
+                                    <select name="ul_city" class="select_ssq">
+                                        <option>{$i.ul_city}</option>
+                                    </select>
+                                    <select name="ul_area" class="select_ssq">
+                                        <option>{$i.ul_area}</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="30%" class="Font14 FontW Lineheight35" align="right">收件人姓名：</td>
+                                <td><input type="text" name="ul_name" required value="{$i.ul_name}"
+                                           class="input_name"></td>
+                            </tr>
+                            <tr>
+                                <td width="30%" class="Font14 FontW Lineheight35" align="right">街道地址：</td>
+                                <td><input type="text" required size="50" value="{$i.ul_stree_local}"
+                                           name="ul_stree_local"
+                                           class="input_addr"></td>
+                            </tr>
+                            <tr>
+                                <td width="30%" class="Font14 FontW Lineheight35" align="right">邮政编码：</td>
+                                <td><input type="text" required size="10" pattern="[0-9]{6}" name="ul_post_num"
+                                           value="{$i.ul_post_num}"
+                                           class="input_zipcode"></td>
+                            </tr>
+                            <tr>
+                                <td width="30%" class="Font14 FontW Lineheight35" align="right">手机号码：</td>
+                                <td><input type="text" name="ul_phone" required pattern="[0-9]{11}"
+                                           value="{$i.ul_phone}"
+                                           class="input_tel"></td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="30%" class="Font14 FontW Lineheight35"></td>
+                                <td class="Lineheight35"><input name="" type="submit" value="确认修改" class="Submit"><input
+                                        name=""
+                                        type="button"
+                                        value="删除"
+                                        class="Submit"
+                                        onclick="del('{$i.ul_id}')"
+                                >
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </volist>
+            </notempty>
+            <!--add new address-->
+            <form action="__ROOT__/home/CustLocal/addUserLocal" method="post">
+                <table style="margin-top:10px;">
+                    <tr>
+                        <td width="30%" class="Font14 FontW Lineheight35" align="right">选择所在地：</td>
+                        <td>
+                            <select name="ul_privence" class="select_ssq">
+                                <option>陕西省</option>
+                            </select>
+                            <select name="ul_city" class="select_ssq">
+                                <option>西安市</option>
+                            </select>
+                            <select name="ul_area" class="select_ssq">
+                                <option>莲湖区</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="Font14 FontW Lineheight35" align="right">收件人姓名：</td>
+                        <td><input type="text" name="ul_name" required class="input_name"></td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="Font14 FontW Lineheight35" align="right">街道地址：</td>
+                        <td><input type="text" name="ul_stree_local" required class="input_addr"></td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="Font14 FontW Lineheight35" align="right">邮政编码：</td>
+                        <td><input type="text" name="ul_post_num" required pattern="[0-9]{6}" class="input_zipcode">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="Font14 FontW Lineheight35" align="right">手机号码：</td>
+                        <td><input type="text" name="ul_phone" required pattern="[0-9]{11}" class="input_tel"></td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="Font14 FontW Lineheight35" align="right"></td>
+                        <td class="Font14 Font Lineheight35"><input name="" type="submit" value="新增收货地址" class="Submit">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+    </article>
+</section>
+<!--End content-->
+<div class="F-link">
+    <span>友情链接：</span>
+</div>
+<include file='Public/footer.html'/>
+
+<script>
+
+    function del(id) {
+        location.href = '__ROOT__/home/CustLocal/deleteUserLocal/id/' + id;
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>DeathGhost-用户中心</title>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="__PUBLIC__/js/public.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jqpublic.js"></script>
+</head>
+<body>
+<include file='Public/header.html'/>
+<section class="Psection MT20">
+    <nav class="U-nav Font14 FontW">
+        <ul>
+            <li><i></i><a href="__ROOT__/home/Customer/userCenter">用户中心首页</a></li>
+            <li><i></i><a href="__ROOT__/home/Order/userOrder">我的订单</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/UserLoal">收货地址</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userMessage">我的评论</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userCoupon">我的优惠券</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userFavorites">我的收藏</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userAccount">账户管理</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userExit">安全退出</a></li>
+        </ul>
+    </nav>
+    <article class="U-article Overflow">
+        <!--"引用“user_page/user_index.html”"-->
+        <section class="usercenter">
+            <span class="Weltitle Block Font16 CorRed FontW Lineheight35">Welcome欢迎光临！</span>
+            <div class="U-header MT20 Overflow">
+                <notempty name="dataCustomer.c_pic">
+                    <img src="__PUBLIC__/upload/{$dataCustomer.c_pic}">
+                </notempty>
+                <empty name="dataCustomer.c_pic">
+                    <img src="__PUBLIC__/upload/p2362984517.jpg">
+                </empty>
+
+                <p class="Font14 FontW">{$Think.session.user.c_name} 欢迎您回到 用户中心！</p>
+                <!--<p class="Font12">您的上一次登录时间:
+                    <time> 2016-05-18 14:20:04</time>
+                </p>-->
+                <p class="Font12 CorRed FontW">我的优惠券( {$cfcCount} ) | 我的积分( {$dataUserDetail.cd_acc_num})</p>
+            </div>
+            <ul class="s-States Overflow FontW" id="Lbn">
+                <li class="Font14 FontW">幸福业务在线提醒：</li>
+                <li><a href="#">待付款( {$waitPay} )</a></li>
+                <li><a href="#">待发货( {$waitSend} )</a></li>
+                <li><a href="#">待收货( {$waitRecevie} )</a></li>
+                <li><a href="#">待评价( {$waitDes} )</a></li>
+            </ul>
+        </section>
+    </article>
+</section>
+<div class="F-link">
+    <span>友情链接：</span>
+</div>
+<include file='Public/footer.html'/>
+</body>
+</html>

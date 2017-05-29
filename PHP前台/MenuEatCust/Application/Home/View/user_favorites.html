@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>用户中心</title>
+    <meta name="author" content="DeathGhost"/>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="__PUBLIC__/js/public.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/jqpublic.js"></script>
+
+</head>
+<body>
+<include file="Public/header.html"/>
+<!--Start content-->
+<section class="Psection MT20">
+    <nav class="U-nav Font14 FontW">
+        <ul>
+            <li><i></i><a href="__ROOT__/home/Customer/userCenter">用户中心首页</a></li>
+            <li><i></i><a href="__ROOT__/home/Order/userOrder">我的订单</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/UserLoal">收货地址</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userMessage">我的评论</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userCoupon">我的优惠券</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userFavorites">我的收藏</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userAccount">账户管理</a></li>
+            <li><i></i><a href="__ROOT__/home/Customer/userExit">安全退出</a></li>
+        </ul>
+    </nav>
+    <article class="U-article Overflow">
+        <!--user Favorites-->
+        <section class="ShopFav Overflow">
+            <span class="ShopFavtitle Block Font14 FontW Lineheight35">我的收藏</span>
+            <ul>
+                <volist name="dataCollect" id="i">
+                    <a href="shop.html" target="_blank">
+                        <li>
+                            <img src="__PUBLIC__/upload/{$i.cc_fs_img}">
+                            <p>{$i.cc_fs_name} (<a href="" style="color: #777777">取消收藏</a>)</p>
+                        </li>
+                    </a>
+                </volist>
+            </ul>
+        </section>
+    </article>
+</section>
+<!--End content-->
+<div class="F-link">
+    <span>友情链接：</span>
+</div>
+<include file="Public/footer.html"/>
+</body>
+</html>
